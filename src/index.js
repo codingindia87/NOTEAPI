@@ -18,6 +18,8 @@ app.use("/note",noteRouters);
 
 mongoose.connect(process.env.MONGO_URL)
 
+console.log("hello")
+
 const PORT = process.env.PORT || 5000
 .then(()=>{
     app.listen(PORT,()=>{
