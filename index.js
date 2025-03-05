@@ -30,4 +30,8 @@ mongoose.connect(process.env.MONGO_URL)
 
 console.log("hello")
 
+app.get("/",(req,res)=>{
+    res.send("Ok")
+})
+
 
