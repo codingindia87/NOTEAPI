@@ -1,5 +1,5 @@
 const userModel = require("../models/user");
-const bcrypt = require("bcrypt")
+// const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken");
 
 const SECRET_KEY = "SECRET_KEY"
@@ -12,11 +12,11 @@ const signup = async (req,res)=>{
             return res.status(400).json({message:"User alredy exists"})
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // const hashedPassword = await bcrypt.hash(password, 10);
 
         const result = await userModel.create({
             email:email,
-            password:hashedPassword,
+            password:password,
             username:username
         })
 
@@ -38,7 +38,8 @@ const signin = async (req,res)=>{
             return res.status(400).json({message:"User not found"})
         }
 
-        const matchPassword = await bcrypt.compare(password,existingUser.password);
+        // const matchPassword = await bcrypt.compare(password,existingUser.password);
+        const matchPassword = password==existingUser.password
         if(!matchPassword){
             return res.status(400).json({message:"Invalid Credentials"});
         }
